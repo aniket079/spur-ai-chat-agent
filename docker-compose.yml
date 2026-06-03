@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: spur_ai_chat_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: spur
+      POSTGRES_PASSWORD: spur123
+      POSTGRES_DB: spur_ai_chat
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
