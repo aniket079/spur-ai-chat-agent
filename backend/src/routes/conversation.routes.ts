@@ -3,7 +3,7 @@ import {
   createConversation,
   addUserMessageHandler,
   getMessages,
-} from "../controllers/conversation.controller";
+} from "../controllers/conversation.controller.js";
 
 const router = Router();
 

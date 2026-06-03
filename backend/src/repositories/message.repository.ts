@@ -1,5 +1,5 @@
 import type { Sender } from "@prisma/client";
-import { prisma } from "../db/prisma";
+import { prisma } from "../db/prisma.js";
 
 export function createMessage(conversationId: string, sender: Sender, text: string) {
   return prisma.message.create({
