@@ -3,7 +3,7 @@ import {
   createConversationService,
   addUserMessage,
   getConversationMessages,
-} from "../services/conversation.service";
+} from "../services/conversation.service.js";
 
 function sendError(res: Response, status: number, message: string) {
   return res.status(status).json({ error: message });
@@ -38,7 +38,7 @@ export async function addUserMessageHandler(req: Request, res: Response) {
 
     const result = await addUserMessage(sessionId, trimmedMessage);
 
-    return res.json({ sessionId: result.conversationId, message: result.message });
+    return res.json({ sessionId: result.sessionId, reply: result.reply });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Unable to add user message";
     return sendError(res, 400, message);
@@ -49,7 +49,7 @@ export async function getMessages(req: Request, res: Response) {
   try {
     const { id } = req.params;
 
-    if (!id) {
+    if (!id || Array.isArray(id)) {
       return sendError(res, 400, "Conversation id is required");
     }
 

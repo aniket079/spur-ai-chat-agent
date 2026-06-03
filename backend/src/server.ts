@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { router as conversationRoutes } from "./routes/conversation.routes";
+import { router as conversationRoutes } from "./routes/conversation.routes.js";
 
 dotenv.config();
 
