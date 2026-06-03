@@ -11,6 +11,47 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U spur"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: spur_ai_chat_backend
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: postgresql://spur:spur123@postgres:5432/spur_ai_chat
+      PORT: 4000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - spur_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: spur_ai_chat_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - spur_network
+    environment:
+      VITE_API_URL: http://backend:4000
+
+networks:
+  spur_network:
+    driver: bridge
 
 volumes:
   postgres_data:
