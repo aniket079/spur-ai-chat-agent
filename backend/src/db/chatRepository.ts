@@ -1,4 +1,4 @@
-import type { PrismaClient, Sender } from "../../generated/prisma/index.js";
+import { PrismaClient, Sender } from "@prisma/client";
 
 export class ChatRepository {
   constructor(private readonly prisma: PrismaClient) {}
