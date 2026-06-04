@@ -308,6 +308,25 @@ Database can be hosted on Neon or Supabase PostgreSQL.
 
 ---
 
+## Trade-offs & Future Improvements
+
+### Trade-offs
+
+* I used a prompt-based knowledge approach for the support assistant instead of implementing a full Retrieval-Augmented Generation (RAG) pipeline. This kept the solution focused and allowed me to deliver the core requirements within the assignment timeline.
+* Conversation history is persisted in PostgreSQL, while conversation metadata for the sidebar is stored in browser local storage to keep the implementation simple and avoid introducing user authentication.
+* I chose Groq as the LLM provider due to its fast response times and straightforward integration while still satisfying the requirement of using a production-grade LLM API.
+
+### If I Had More Time
+
+* Implement streaming AI responses for a more responsive chat experience.
+* Add authentication and user-specific conversation management.
+* Introduce Redis caching and rate limiting for improved scalability.
+* Replace prompt-based store knowledge with a RAG-based knowledge retrieval system.
+* Add conversation search, rename, and delete capabilities.
+* Improve observability with structured logging, metrics, and monitoring.
+* Add automated tests (unit, integration, and end-to-end) and CI/CD pipelines.
+* Enhance the UI with richer conversation management and accessibility improvements.
+
 ## Author
 
 Aniket Tiwari
