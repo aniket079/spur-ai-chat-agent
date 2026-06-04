@@ -6,6 +6,10 @@ The application simulates a real customer support experience where users can cha
 
 ---
 
+<img width="1664" height="966" alt="image" src="https://github.com/user-attachments/assets/4a0d4d73-f525-4453-a1c3-a0d54315c3b1" />
+
+
+
 ## Features
 
 ### AI Support Chat
